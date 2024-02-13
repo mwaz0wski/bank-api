@@ -13,6 +13,14 @@ public class Movement {
     private double balance;
     private LocalDateTime date;
 
+
+    public double getAmount() {
+        if (type.isSubstractor) {
+            return - amount;
+        }
+        return amount;
+    }
+
     public enum MovementType {
         DEPOSIT(false), WITHDRAWAL(true), COMMISSION(true), INCOMING_TRANSFER(false), OUTGOING_TRANSFER(true);
         final boolean isSubstractor;

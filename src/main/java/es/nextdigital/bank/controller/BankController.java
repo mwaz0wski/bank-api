@@ -1,6 +1,7 @@
 package es.nextdigital.bank.controller;
 
 import es.nextdigital.bank.model.Account;
+import es.nextdigital.bank.model.DepositRequest;
 import es.nextdigital.bank.model.Movement;
 import es.nextdigital.bank.model.WithdrawRequest;
 import es.nextdigital.bank.service.BankService;
@@ -29,7 +30,13 @@ public class BankController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PostMapping("/cards/{cardId}/withdrawal")
-    public void withdrawFromCard(@PathVariable String cardId, @RequestParam Integer entityCode, @RequestBody WithdrawRequest request) {
-        bankService.withdrawFromCard(cardId, entityCode, request);
+    public void withdrawFromCard(@PathVariable String cardId, @RequestParam Integer atmEntityCode, @RequestBody WithdrawRequest request) {
+        bankService.withdrawFromCard(cardId, atmEntityCode, request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PostMapping("/cards/{cardId}/deposit")
+    public void depositIntoCard(@PathVariable String cardId, @RequestParam Integer atmEntityCode, @RequestBody DepositRequest request) {
+        bankService.depositIntoCard(cardId, atmEntityCode, request);
     }
 }
