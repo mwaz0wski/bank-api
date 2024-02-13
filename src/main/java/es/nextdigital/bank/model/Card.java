@@ -3,7 +3,7 @@ package es.nextdigital.bank.model;
 public abstract class Card  {
     protected String id;
     private String pin;
-    protected BankAccount account;
+    protected Account account;
     protected boolean active;
     protected boolean requiresActivation;
     protected abstract boolean withdraw(Double amount);

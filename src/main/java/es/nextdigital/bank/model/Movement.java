@@ -1,13 +1,24 @@
 package es.nextdigital.bank.model;
 
+import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
+@Builder
 public class Movement {
-    private Double amount;
+    private double amount;
     private MovementType type;
+    private double balance;
+    private LocalDateTime date;
 
     public enum MovementType {
-        DEPOSIT, WITHDRAWAL, COMMISSION, INCOMING_TRANSFER, OUTGOING_TRANSFER;
+        DEPOSIT(false), WITHDRAWAL(true), COMMISSION(true), INCOMING_TRANSFER(false), OUTGOING_TRANSFER(true);
+        final boolean isSubstractor;
+
+        MovementType(boolean isSubstractor) {
+            this.isSubstractor = isSubstractor;
+        }
     }
 }
