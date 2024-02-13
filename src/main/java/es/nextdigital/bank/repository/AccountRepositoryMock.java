@@ -3,7 +3,6 @@ package es.nextdigital.bank.repository;
 import es.nextdigital.bank.model.Account;
 import es.nextdigital.bank.model.Customer;
 import es.nextdigital.bank.model.Movement;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -11,7 +10,7 @@ import java.time.Month;
 import java.util.ArrayList;
 
 @Repository
-public class BankRepositoryMock implements BankRepository {
+public class AccountRepositoryMock implements AccountRepository {
     private static Account account;
     static {
         var customer = Customer.builder().documentNumber("12345678Z").build();
@@ -32,7 +31,7 @@ public class BankRepositoryMock implements BankRepository {
                 .build();
     }
     @Override
-    public Account findAccount(String id) {
+    public Account findById(String id) {
         return account;
     }
 }

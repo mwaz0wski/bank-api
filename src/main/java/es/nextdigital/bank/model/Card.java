@@ -1,13 +1,12 @@
 package es.nextdigital.bank.model;
 
-public abstract class Card  {
-    protected String id;
+import lombok.Data;
+
+@Data
+public abstract sealed class Card permits CreditCard, DebitCard  {
+    private String id;
     private String pin;
-    protected Account account;
-    protected boolean active;
-    protected boolean requiresActivation;
-    protected abstract boolean withdraw(Double amount);
-    protected void deposit(Double amount) {
-        this.account.setBalance(this.account.getBalance() + amount);
-    }
+    private String account;
+    private boolean active;
+    private boolean requiresPinChange;
 }
